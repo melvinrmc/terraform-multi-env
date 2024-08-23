@@ -21,14 +21,10 @@ module "development" {
   }
   queue_lambda_triggered_arn = "arn:aws:lambda:us-east-1:646101853261:function:memberReplicationProc-dev"
 }
-/*
-module "testing" {
-  source = "./aws-stack"
-  environment = "testing"
-  additional_tags = {
-    environment = "testing"
-  }
-}  */
+
+module "mariadb" {
+  source = "./mariadb"
+}
 
 output "members_queue_id" {
   value = module.development.members_queue_id
